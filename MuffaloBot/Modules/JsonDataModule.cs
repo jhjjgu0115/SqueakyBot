@@ -31,6 +31,7 @@ namespace SqueakyBot.Modules
         public async Task ReloadDataAsync()
         {
             HttpClient http = new HttpClient();
+            string result = await http.GetStringAsync("https://raw.githubusercontent.com/jhjjgu0115/SqueakyBot/master/MuffaloBot/Data/data.json").ConfigureAwait(false);
             JObject jObject = JObject.Parse(result);
             data = jObject;
         }
