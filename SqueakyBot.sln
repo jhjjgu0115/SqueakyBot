@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqueakyBot", "MuffaloBot\SqueakyBot.csproj", "{ECEEB9A9-14E7-4A39-9715-4B458E944D65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECEEB9A9-14E7-4A39-9715-4B458E944D65}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{ECEEB9A9-14E7-4A39-9715-4B458E944D65}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{ECEEB9A9-14E7-4A39-9715-4B458E944D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECEEB9A9-14E7-4A39-9715-4B458E944D65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AFDFD64-AD0D-4E5E-98D2-92DD1F821E2B}
+	EndGlobalSection
+EndGlobal
