@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Spdskatr")]
 [assembly: AssemblyProduct("SqueakyBot")]
-[assembly: AssemblyCopyright("Copyright © Spdskatr. 2018")]
+[assembly: AssemblyCopyright("Copyright © NukaFrog. 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

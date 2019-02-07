@@ -27,37 +27,37 @@ namespace SqueakyBot.Commands
             MoreJPEG,
             MostJPEG
         }
-        [Command("소용돌이"), Description("Applies a swirl effect to an image. The image can be provided as an attachment or a link.")]
+        [Command("소용돌이"), Description("소용돌이 이펙트를 적용합니다. 링크와 함께 제공됩니다.")]
         public async Task ImageMagickDistort(CommandContext ctx, [Description("Optional. The link to the image you want to apply the effect to.")] string link = null)
         {
             await DoImageMagickCommand(ctx, ImageEditMode.Swirl, link).ConfigureAwait(false);
         }
-        [Command("갸우뚱"), Description("Shifts and rescales the image in weird ways. The image can be provided as an attachment or a link.")]
+        [Command("갸우뚱"), Description("살짝 기울어진 이펙트를 적용합니다. 링크와 함께 제공됩니다.")]
         public async Task ImageMagickWonky(CommandContext ctx, [Description("Optional. The link to the image you want to apply the effect to.")] string link = null)
         {
             await DoImageMagickCommand(ctx, ImageEditMode.Rescale, link).ConfigureAwait(false);
         }
-        [Command("출렁"), Description("Applies a wave effect to an image. The image can be provided as an attachment or a link.")]
+        [Command("출렁"), Description("물결 이펙트를 적용합니다. 링크와 함께 제공됩니다.")]
         public async Task ImageMagickWave(CommandContext ctx, [Description("Optional. The link to the image you want to apply the effect to.")] string link = null)
         {
             await DoImageMagickCommand(ctx, ImageEditMode.Wave, link).ConfigureAwait(false);
         }
-        [Command("implode"), Description("Applies an implosion effect to an image. The image can be provided as an attachment or a link.")]
+        [Command("터짐"), Description("폭8이펙트가 적용합니다. 링크와 함께 제공됩니다.")]
         public async Task ImageMagickImplode(CommandContext ctx, [Description("Optional. The link to the image you want to apply the effect to.")] string link = null)
         {
             await DoImageMagickCommand(ctx, ImageEditMode.Implode, link).ConfigureAwait(false);
         }
-        [Command("jpeg"), Description("Compresses an image. A lot. The image can be provided as an attachment or a link.")]
+        [Command("jpeg"), Description("많이 압축시킨 jpeg입니다. 링크와 함께 제공됩니다.")]
         public async Task ImageMagickJPEG(CommandContext ctx, [Description("Optional. The link to the image you want to apply the effect to.")] string link = null)
         {
             await DoImageMagickCommand(ctx, ImageEditMode.JPEG, link).ConfigureAwait(false);
         }
-        [Command("moarjpeg"), Description("Compresses an image. Even more than `!jpeg`. The image can be provided as an attachment or a link.")]
+        [Command("moarjpeg"), Description("`!jpeg`보다 더 압축시킨 jpeg입니다. 링크와 함께 제공됩니다.")]
         public async Task ImageMagickMoreJPEG(CommandContext ctx, [Description("Optional. The link to the image you want to apply the effect to.")] string link = null)
         {
             await DoImageMagickCommand(ctx, ImageEditMode.MoreJPEG, link).ConfigureAwait(false);
         }
-        [Command("mostjpeg"), Description("Compresses an image. So much that that will become smaller than a paperclip. The image can be provided as an attachment or a link.")]
+        [Command("mostjpeg"), Description("압축된 이미지입니다. 너무 많이 압축한 나머지 트럼보 발에 밟힌 랫킨과도 같습니다. 링크와 함께 제공됩니다.")]
         public async Task ImageMagickMostJPEG(CommandContext ctx, [Description("Optional. The link to the image you want to apply the effect to.")] string link = null)
         {
             await DoImageMagickCommand(ctx, ImageEditMode.MostJPEG, link).ConfigureAwait(false);
@@ -92,7 +92,7 @@ namespace SqueakyBot.Commands
                 }
                 catch (HttpRequestException)
                 {
-                    await ctx.RespondAsync("Error connecting to image link.");
+                    await ctx.RespondAsync("이미지링크에 접속할수 없습니다.");
                     return;
                 }
                 if (attachmentUrl.EndsWith(".gif"))
@@ -106,14 +106,14 @@ namespace SqueakyBot.Commands
             }
             else
             {
-                await ctx.RespondAsync("No image found.");
+                await ctx.RespondAsync("이미지를 찾을 수 없습니다.");
             }
         }
         async Task DoImageMagickCommandForGif(CommandContext ctx, byte[] buffer, ImageEditMode mode)
         {
             if (mode == ImageEditMode.Rescale)
             {
-                await ctx.RespondAsync("This mode is not supported for gifs since it is slow and often dramatically increases gif size");
+                await ctx.RespondAsync("이 모드는 속도가 느리고 이미지사이즈에 기반해서 느려지기 때문에 gif는 지원하지 않습니다.");
                 return;
             }
             MagickImageCollection image;
@@ -123,7 +123,7 @@ namespace SqueakyBot.Commands
             }
             catch (MagickMissingDelegateErrorException)
             {
-                await ctx.RespondAsync("Image format not recognised.");
+                await ctx.RespondAsync("이미지 파일확장자를 알아볼 수 없다.");
                 return;
             }
             int originalWidth = image[0].Width, originalHeight = image[0].Height;

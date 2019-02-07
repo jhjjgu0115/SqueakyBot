@@ -140,9 +140,9 @@ namespace SqueakyBot.Converters
         /// <returns>Data for the help message.</returns>
         public CommandHelpMessage Build()
         {
-            _embed.Title = "SqueakyBot Help";
+            _embed.Title = "찍찍이 명령어";
             _embed.Color = DiscordColor.Green;
-            string description = "Listing all public commands. Type `!mbhelp <command>` to learn more about a command. Type `!quotes` for all quote commands.";
+            string description = "모든 찍찍이 명령어를 출력합니다. `!도움 <명령어>` 를 통해 더 자세히 알아볼 수 있습니다. `!대사집`이라고 하면 기타 명령어를 보여줍니다.";
             if (_name != null)
             {
                 StringBuilder stringBuilder = new StringBuilder();
