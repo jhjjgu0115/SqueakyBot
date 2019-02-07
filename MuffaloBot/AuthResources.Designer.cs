@@ -40,7 +40,7 @@ namespace SqueakyBot
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MuffaloBot.AuthResources", typeof(AuthResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SqueakyBot.AuthResources", typeof(AuthResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

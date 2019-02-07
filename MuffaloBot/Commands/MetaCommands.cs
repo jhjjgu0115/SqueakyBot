@@ -108,7 +108,7 @@ This bot account will not have an invite link. It is exclusive to the RimWorld d
         {
             await ctx.TriggerTypingAsync().ConfigureAwait(false);
             string actualCode = code.TrimStart('`', 'c', 's', 'h', 'a', 'r', 'p').TrimEnd('`');
-            ScriptOptions options = ScriptOptions.Default.WithImports("System", "System.Collections.Generic", "System.Diagnostics", "System.Linq", "System.Net.Http", "System.Reflection", "System.Text", "System.Text.RegularExpressions", "System.Threading.Tasks", "DSharpPlus", "DSharpPlus.CommandsNext", "DSharpPlus.Entities", "DSharpPlus.EventArgs", "DSharpPlus.Exceptions", "MuffaloBot", "MuffaloBot.Commands")
+            ScriptOptions options = ScriptOptions.Default.WithImports("System", "System.Collections.Generic", "System.Diagnostics", "System.Linq", "System.Net.Http", "System.Reflection", "System.Text", "System.Text.RegularExpressions", "System.Threading.Tasks", "DSharpPlus", "DSharpPlus.CommandsNext", "DSharpPlus.Entities", "DSharpPlus.EventArgs", "DSharpPlus.Exceptions", "SqueakyBot", "SqueakyBot.Commands")
                 .WithReferences(AppDomain.CurrentDomain.GetAssemblies().Where(xa => !xa.IsDynamic && !string.IsNullOrWhiteSpace(xa.Location)));
             Script script = CSharpScript.Create(actualCode, options, typeof(EvalGobals));
 

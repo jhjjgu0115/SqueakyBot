@@ -14,12 +14,12 @@ namespace SqueakyBot.Converters
     /// <summary>
     /// Help formatter based off of the default help formatter
     /// </summary>
-    public class MuffaloBotHelpFormatter : IHelpFormatter
+    public class SqueakyBotHelpFormatter : IHelpFormatter
     {
         /// <summary>
         /// Creates a new default help formatter.
         /// </summary>
-        public MuffaloBotHelpFormatter()
+        public SqueakyBotHelpFormatter()
         {
             _embed = new DiscordEmbedBuilder();
             _name = null;
@@ -140,7 +140,7 @@ namespace SqueakyBot.Converters
         /// <returns>Data for the help message.</returns>
         public CommandHelpMessage Build()
         {
-            _embed.Title = "MuffaloBot Help";
+            _embed.Title = "SqueakyBot Help";
             _embed.Color = DiscordColor.Green;
             string description = "Listing all public commands. Type `!mbhelp <command>` to learn more about a command. Type `!quotes` for all quote commands.";
             if (_name != null)

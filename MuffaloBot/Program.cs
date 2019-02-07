@@ -35,8 +35,8 @@ namespace SqueakyBot
                 EnableDefaultHelp = false
             });
             commandsNext.RegisterCommands(Assembly.GetExecutingAssembly());
-            client.DebugLogger.LogMessage(LogLevel.Info, "MuffaloBot", $"Registered {commandsNext.RegisteredCommands.Count} commands", DateTime.Now);
-            commandsNext.SetHelpFormatter<MuffaloBotHelpFormatter>();
+            client.DebugLogger.LogMessage(LogLevel.Info, "SqueakyBot", $"Registered {commandsNext.RegisteredCommands.Count} commands", DateTime.Now);
+            commandsNext.SetHelpFormatter<SqueakyBotHelpFormatter>();
             LoadModules();
         }
         public void LoadModules()
@@ -48,11 +48,11 @@ namespace SqueakyBot
                     try
                     {
                         client.AddModule((BaseModule)Activator.CreateInstance(t));
-                        client.DebugLogger.LogMessage(LogLevel.Info, "MuffaloBot", $"Loaded module {t.FullName}", DateTime.Now);
+                        client.DebugLogger.LogMessage(LogLevel.Info, "SqueakyBot", $"Loaded module {t.FullName}", DateTime.Now);
                     }
                     catch (Exception e)
                     {
-                        client.DebugLogger.LogMessage(LogLevel.Error, "MuffaloBot", $"Could not load module {t.FullName}: {e}", DateTime.Now);
+                        client.DebugLogger.LogMessage(LogLevel.Error, "SqueakyBot", $"Could not load module {t.FullName}: {e}", DateTime.Now);
                     }
                 }
             }
