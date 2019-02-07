@@ -84,7 +84,7 @@ namespace SqueakyBot.Modules
         {
             if (guild == null) return;
             string content;
-            content = message.Content ?? "(Message too old...)";
+            content = message.Content ?? "(메세지가 너무 오래되었습니다...)";
             if (content.Length == 0)
             {
                 content = "(Empty)";
@@ -103,7 +103,7 @@ namespace SqueakyBot.Modules
         async Task NotifyModifyAsync(DiscordMessage before, DiscordMessage after, DiscordGuild guild)
         {
             string content;
-            content = before?.Content ?? "(Message too old...)";
+            content = before?.Content ?? "(메세지가 너무 오래되었습니다...)";
             if (content.Length == 0)
             {
                 content = "(Empty)";

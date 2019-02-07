@@ -84,14 +84,14 @@ This bot account will not have an invite link. It is exclusive to the RimWorld d
         [Command("die"), RequireOwner, Hidden]
         public async Task DieAsync(CommandContext ctx)
         {
-            await ctx.RespondAsync("Restarting...");
+            await ctx.RespondAsync("으앙 쥬금.");
             await ctx.Client.DisconnectAsync();
             Environment.Exit(0);
         }
         [Command("crash"), RequireOwner, Hidden]
         public Task CrashAsync(CommandContext ctx)
         {
-            throw new Exception("oops.");
+            throw new Exception("엌.");
         }
         [Command("roleid"), Hidden]
         public Task GetRoleAsync(CommandContext ctx, DiscordRole role)
@@ -126,11 +126,11 @@ This bot account will not have an invite link. It is exclusive to the RimWorld d
 
             if (ex != null)
             {
-                await ctx.RespondAsync($"**Error** ```{ex}```");
+                await ctx.RespondAsync($"**에러** ```{ex}```");
             }
             else
             {
-                await ctx.RespondAsync($"Result: ```{state?.ReturnValue ?? "(null)"}```");
+                await ctx.RespondAsync($"결과: ```{state?.ReturnValue ?? "(null)"}```");
             }
         }
     }

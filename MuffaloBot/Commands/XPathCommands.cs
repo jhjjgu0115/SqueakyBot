@@ -14,7 +14,7 @@ namespace SqueakyBot.Commands
 {
     public class XPathCommands
     {
-        [Command("경로"), Description("림월드 xml 데이터베이스에 접근하여 일치하는 xml노드의 경로를 찾아줍니다. **예제:**\n`!경로 Defs/ThingDef[defName=\"Steel\"]/description`\n`!경로 Defs/ThingDef[@Name=\"BuildingBase\"]`\n`!경로 //*`")]
+        [Command("경로"), Description("림월드 xml 데이터베이스에 접근하여 일치하는 xml노드의 경로를 찾아줍니다.\n **예제:**\n`!경로 Defs/ThingDef[defName=\"Steel\"]/description`\n`!경로 Defs/ThingDef[@Name=\"BuildingBase\"]`\n`!경로 //*`")]
         public async Task XPathCommand(CommandContext ctx)
         {
             if (string.IsNullOrWhiteSpace(ctx.RawArgumentString)) return;
@@ -24,14 +24,14 @@ namespace SqueakyBot.Commands
             }
             catch (System.Xml.XPath.XPathException ex)
             {
-                await ctx.RespondAsync("XPath 식별 불가! 에러: " + ex.Message);
+                await ctx.RespondAsync("경로 식별 불가! 에러: " + ex.Message);
             }
         }
 
         [Command("아이템정보"), Description("림월드의 건물,아이템에 대한 정보를 표시합니다.")]
-        public async Task InfoCommand(CommandContext ctx, [RemainingText, Description("The name of the item.")] string itemName)
+        public async Task InfoCommand(CommandContext ctx, [RemainingText, Description("아이템의 이름")] string 아이템명)
         {
-            if (!new Regex("^[a-zA-Z0-9\\-_ ]*$").IsMatch(itemName))
+            if (!new Regex("^[a-zA-Z0-9\\-_ ]*$").IsMatch(아이템명))
             {
                 await ctx.RespondAsync("식별 불가능한 이름입니다! 글자, 숫자, 공백, _(언더바), -(대쉬)만 식별 가능합니다.");
                 return;
@@ -39,9 +39,9 @@ namespace SqueakyBot.Commands
             XmlDatabaseModule xmlDatabase = ctx.Client.GetModule<XmlDatabaseModule>();
             IEnumerable<KeyValuePair<string, XmlNode>> results =
                 xmlDatabase
-                .SelectNodesByXpath($"Defs/ThingDef[translate(defName,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{itemName.ToLower()}\"]")
-                .Concat(xmlDatabase.SelectNodesByXpath($"Defs/ThingDef[translate(label,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{itemName.ToLower()}\"]"))
-                .Concat(xmlDatabase.SelectNodesByXpath($"Defs/ThingDef[contains(label, \"{itemName.ToLower()}\")]"))
+                .SelectNodesByXpath($"Defs/ThingDef[translate(defName,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{아이템명.ToLower()}\"]")
+                .Concat(xmlDatabase.SelectNodesByXpath($"Defs/ThingDef[translate(label,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{아이템명.ToLower()}\"]"))
+                .Concat(xmlDatabase.SelectNodesByXpath($"Defs/ThingDef[contains(label, \"{아이템명.ToLower()}\")]"))
                 .Distinct();
             DiscordEmbedBuilder builder = new DiscordEmbedBuilder();
             builder.WithColor(DiscordColor.Azure);

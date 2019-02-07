@@ -104,7 +104,7 @@ namespace SqueakyBot.Converters
                     }
                     stringBuilder.AppendLine();
                 }
-                _embed.AddField("Arguments", stringBuilder.ToString(), false);
+                _embed.AddField("명령인자", stringBuilder.ToString(), false);
             }
             return this;
         }
@@ -128,7 +128,7 @@ namespace SqueakyBot.Converters
         {
             if (subcommands.Any())
             {
-                _embed.AddField((_name != null) ? "Subcommands" : "Commands", string.Join(", ", from xc in subcommands
+                _embed.AddField((_name != null) ? "추가명령어" : "명령어", string.Join(", ", from xc in subcommands
                                                                                                           select Formatter.InlineCode(xc.QualifiedName)), false);
             }
             return this;
@@ -146,10 +146,10 @@ namespace SqueakyBot.Converters
             if (_name != null)
             {
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.Append(Formatter.InlineCode(_name)).Append(": ").Append(string.IsNullOrWhiteSpace(_desc) ? "No description provided." : _desc);
+                stringBuilder.Append(Formatter.InlineCode(_name)).Append(": ").Append(string.IsNullOrWhiteSpace(_desc) ? "설명이 제공되지 않았습니다." : _desc);
                 if (_gexec)
                 {
-                    stringBuilder.AppendLine().AppendLine().Append("This can be executed as a standalone command.");
+                    stringBuilder.AppendLine().AppendLine().Append("이 명령어는 독립적으로 실행 가능한 명령어 입니다.");
                 }
                 description = stringBuilder.ToString();
             }

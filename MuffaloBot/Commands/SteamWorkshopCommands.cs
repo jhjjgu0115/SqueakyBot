@@ -23,10 +23,10 @@ namespace SqueakyBot.Commands
             StreamReader reader = new StreamReader(req.GetResponse().GetResponseStream());
             return JObject.Parse(reader.ReadToEnd());
         }
-        [Command("창작마당검색"), Description("창작마당에서 컨텐츠를 검색합니다.")]
-        public async Task Search(CommandContext ctx, [RemainingText, Description("The search query.")] string query)
+        [Command("창작마당"), Description("창작마당에서 컨텐츠를 검색합니다.")]
+        public async Task Search(CommandContext ctx, [RemainingText, Description("찾을 단어.")] string 쿼리)
         {
-            JObject result = Query(query, AuthResources.SteamApiKey, 5);
+            JObject result = Query(쿼리, AuthResources.SteamApiKey, 5);
             if (result["response"]["total"].Value<int>() == 0)
             {
                 await ctx.RespondAsync("결과가 없네요.");
@@ -35,7 +35,7 @@ namespace SqueakyBot.Commands
             {
                 DiscordEmbedBuilder embedBuilder = new DiscordEmbedBuilder();
                 embedBuilder.WithColor(DiscordColor.DarkBlue);
-                embedBuilder.WithTitle($"Results for '{query}'");
+                embedBuilder.WithTitle($"Results for '{쿼리}'");
                 embedBuilder.WithDescription("전체 결과: " + result["response"]["total"]);
                 foreach (JToken item in result["response"]["publishedfiledetails"])
                 {

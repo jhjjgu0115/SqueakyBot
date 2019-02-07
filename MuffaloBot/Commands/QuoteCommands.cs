@@ -18,7 +18,7 @@ namespace SqueakyBot.Commands
         public async Task ListQuotesAsync(CommandContext ctx)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("Listing all quotes:");
+            stringBuilder.AppendLine("모든 대사:");
             JObject data = ctx.Client.GetModule<JsonDataModule>().data;
             foreach (var item in data["quotes"])
             {
