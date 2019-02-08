@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SqueakyBot")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Spdskatr")]
+[assembly: AssemblyCompany("NukaFrog")]
 [assembly: AssemblyProduct("SqueakyBot")]
 [assembly: AssemblyCopyright("Copyright © NukaFrog. 2018")]
 [assembly: AssemblyTrademark("")]
