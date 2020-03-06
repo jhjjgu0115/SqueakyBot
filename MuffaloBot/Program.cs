@@ -14,7 +14,7 @@ namespace SqueakyBot
 {
     class Program
     {
-        public DiscordClient client;
+        public static DiscordClient client;
         public CommandsNextModule commandsNext;
         public Program()
         {

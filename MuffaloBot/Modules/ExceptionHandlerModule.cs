@@ -20,7 +20,7 @@ namespace SqueakyBot.Modules
 
             if (e.Exception is ChecksFailedException)
             {
-                await e.Context.RespondAsync("You can't do that. >:V");
+                await e.Context.RespondAsync("링크가 없거나 이상한거같은데, 지금 저 놀리는거죠?");
                 return;
             }
 

@@ -106,7 +106,7 @@ namespace SqueakyBot.Commands
             }
             else
             {
-                await ctx.RespondAsync("이미지를 찾을 수 없습니다.");
+                await ctx.RespondAsync("이미지 주소좀 확인해줄래요?");
             }
         }
         async Task DoImageMagickCommandForGif(CommandContext ctx, byte[] buffer, ImageEditMode mode)

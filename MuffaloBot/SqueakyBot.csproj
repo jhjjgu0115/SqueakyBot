@@ -149,6 +149,7 @@
   <ItemGroup>
     <Compile Include="Attributes\RequireChannelInGuildAttribute.cs" />
     <Compile Include="Commands\ImageMagickCommands.cs" />
+    <Compile Include="Commands\Message​Delete​Event​.cs" />
     <Compile Include="Commands\MetaCommands.cs" />
     <Compile Include="Commands\QuoteCommands.cs" />
     <Compile Include="Commands\SteamWorkshopCommands.cs" />

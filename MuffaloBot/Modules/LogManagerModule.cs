@@ -20,8 +20,8 @@ namespace SqueakyBot.Modules
         {
             Client = client;
             client.MessageCreated += OnReceiveDiscordCreateLog;
-            client.MessageDeleted += OnReceiveDiscordDeleteLog;
-            client.MessageUpdated += OnReceiveDiscordModifyLog;
+            //client.MessageDeleted += OnReceiveDiscordDeleteLog;
+            //client.MessageUpdated += OnReceiveDiscordModifyLog;
         }
 
         int FindIndexOfIdInCache(ulong id)
@@ -52,33 +52,41 @@ namespace SqueakyBot.Modules
 
         async Task OnReceiveDiscordDeleteLog(MessageDeleteEventArgs e)
         {
-            if (e.Message.Channel?.Name == "logs" || (e.Message.Author?.IsBot ?? true)) return;
-            int ind = -1;
-            if ((ind = FindIndexOfIdInCache(e.Message.Id)) != -1)
+            if (e.Message.Channel?.Name == "logs" || (e.Message.Author?.IsBot ?? true)) return;      
+            if(e.Guild!=null)
             {
-                await NotifyDeleteAsync(discordMessageCache[ind], e.Guild);
-                discordMessageCache[ind] = null;
+                int ind = -1;
+                if ((ind = FindIndexOfIdInCache(e.Message.Id)) != -1)
+                {
+                    await NotifyDeleteAsync(discordMessageCache[ind], e.Guild);
+                    discordMessageCache[ind] = null;
+                }
+                else
+                {
+                    await NotifyDeleteAsync(e.Message, e.Guild);
+                }
             }
-            else
-            {
-                await NotifyDeleteAsync(e.Message, e.Guild);
-            }
+            
         }
         async Task OnReceiveDiscordModifyLog(MessageUpdateEventArgs e)
         {
             if (e.Message.Channel.Name == "logs" || e.Message == null || string.IsNullOrEmpty(e.Message.Content) || e.Message.Author.IsBot) return;
-            int ind = -1;
-            if ((ind = FindIndexOfIdInCache(e.Message.Id)) != -1)
+            if(e.Guild!=null)
             {
-                DiscordMessage before = discordMessageCache[ind];
-                await NotifyModifyAsync(before, e.Message, e.Guild);
-                discordMessageCache[ind] = (DiscordMessage)memberwiseCloneMethod.Invoke(e.Message, new object[0]);
+                int ind = -1;
+                if ((ind = FindIndexOfIdInCache(e.Message.Id)) != -1)
+                {
+                    DiscordMessage before = discordMessageCache[ind];
+                    await NotifyModifyAsync(before, e.Message, e.Guild);
+                    discordMessageCache[ind] = (DiscordMessage)memberwiseCloneMethod.Invoke(e.Message, new object[0]);
+                }
+                else
+                {
+                    await NotifyModifyAsync(null, e.Message, e.Guild);
+                    await PushMessage(e.Message);
+                }
             }
-            else
-            {
-                await NotifyModifyAsync(null, e.Message, e.Guild);
-                await PushMessage(e.Message);
-            }
+            
         }
         async Task NotifyDeleteAsync(DiscordMessage message, DiscordGuild guild)
         {

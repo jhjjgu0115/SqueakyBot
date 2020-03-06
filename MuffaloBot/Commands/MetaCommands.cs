@@ -36,8 +36,7 @@ namespace SqueakyBot.Commands
             DiscordEmbedBuilder embedBuilder = new DiscordEmbedBuilder();
             embedBuilder.WithTitle("찍찍이 봇에 대해");
             embedBuilder.WithUrl("https://github.com/spdskatr/MuffaloBot");
-            embedBuilder.WithDescription(@"찍찍이 관리자: 원자로개구리
-Contributors: spdskatr
+            embedBuilder.WithDescription(@"Original Contributors: spdskatr
 Library: [DSharpPlus](https://dsharpplus.emzi0767.com/) (.NET)
 Other libraries: [Magick.NET](https://github.com/dlemstra/Magick.NET) Wrapper for [ImageMagick](http://www.imagemagick.org/) (.NET)
 Hosted by: Zirr
@@ -62,12 +61,12 @@ This bot account will not have an invite link. It is exclusive to the RimWorld d
             {
                 await message.ModifyAsync("```\n업데이트중... [██████████] 99.999999%\n```");
                 await Task.Delay(3000);
-                await message.ModifyAsync("```\n업데이트중... [**********] ERROR!\n```");
+                await message.ModifyAsync("```\n업데이트중... [**********] Error 응깃!\n```");
                 await Task.Delay(3000);
-                await message.ModifyAsync("```\n업데이트중... [██████████] jk <3\n```");
+                await message.ModifyAsync("```\n업데이트중... [██████████] 농담입니다.\n```");
                 await Task.Delay(1000);
             }
-            await message.ModifyAsync("```\n업데이트중... [██████████] Done!\n```");
+            await message.ModifyAsync("```\n업데이트중... [██████████] 끗!\n```");
         }
         [Command("version"), Hidden]
         public Task GetVersionAsync(CommandContext ctx)

@@ -29,9 +29,9 @@ namespace SqueakyBot.Commands
         }
 
         [Command("아이템정보"), Description("림월드의 건물,아이템에 대한 정보를 표시합니다.")]
-        public async Task InfoCommand(CommandContext ctx, [RemainingText, Description("아이템의 이름")] string 아이템명)
+        public async Task InfoCommand(CommandContext ctx, [RemainingText, Description("아이템의 이름")] string itemName)
         {
-            if (!new Regex("^[a-zA-Z0-9\\-_ ]*$").IsMatch(아이템명))
+            if (itemName ==null || !new Regex("^[a-zA-Z0-9\\-_ ]*$").IsMatch(itemName))
             {
                 await ctx.RespondAsync("식별 불가능한 이름입니다! 글자, 숫자, 공백, _(언더바), -(대쉬)만 식별 가능합니다.");
                 return;
@@ -39,9 +39,9 @@ namespace SqueakyBot.Commands
             XmlDatabaseModule xmlDatabase = ctx.Client.GetModule<XmlDatabaseModule>();
             IEnumerable<KeyValuePair<string, XmlNode>> results =
                 xmlDatabase
-                .SelectNodesByXpath($"Defs/ThingDef[translate(defName,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{아이템명.ToLower()}\"]")
-                .Concat(xmlDatabase.SelectNodesByXpath($"Defs/ThingDef[translate(label,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{아이템명.ToLower()}\"]"))
-                .Concat(xmlDatabase.SelectNodesByXpath($"Defs/ThingDef[contains(label, \"{아이템명.ToLower()}\")]"))
+                .SelectNodesByXpath($"Defs/ThingDef[translate(defName,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{itemName.ToLower()}\"]")
+                .Concat(xmlDatabase.SelectNodesByXpath($"Defs/ThingDef[translate(label,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')=\"{itemName.ToLower()}\"]"))
+                .Concat(xmlDatabase.SelectNodesByXpath($"Defs/ThingDef[contains(label, \"{itemName.ToLower()}\")]"))
                 .Distinct();
             DiscordEmbedBuilder builder = new DiscordEmbedBuilder();
             builder.WithColor(DiscordColor.Azure);

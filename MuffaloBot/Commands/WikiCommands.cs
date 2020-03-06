@@ -15,6 +15,7 @@ namespace SqueakyBot.Commands
     {
         const string queryAddress = "http://rimworldwiki.com/api.php?action=query&list=search&format=json&srlimit=5&srprop=size|wordcount|timestamp&srsearch={0}";
 
+
         [Command("위키검색"), Description("림월드 위키에서 검색합니다.")]
         public async Task Search(CommandContext ctx, [Description("The search query.")] string query)
         {

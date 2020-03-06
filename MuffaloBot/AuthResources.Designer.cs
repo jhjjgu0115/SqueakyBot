@@ -47,8 +47,8 @@ namespace SqueakyBot {
         }
         
         /// <summary>
-        ///   이 강력한 형식의 리소스 클래스를 사용하여 모든 리소스 조회에 대한 현재 스레드의 CurrentUICulture
-        ///   속성을 재정의합니다.
+        ///   이 강력한 형식의 리소스 클래스를 사용하여 모든 리소스 조회에 대해 현재 스레드의 CurrentUICulture 속성을
+        ///   재정의합니다.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Globalization.CultureInfo Culture {
@@ -61,7 +61,7 @@ namespace SqueakyBot {
         }
         
         /// <summary>
-        ///   NTQzMDY0MDYzODU3NTI0NzQ3.Dz3Oww.aUnYBNVmLK_ZLupLx9UuFHcdVgo과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   NTQzMDY0MDYzODU3NTI0NzQ3.XTNjAA.qNe3JRmlNVZRKRl5fcszJNHe6Pc과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         internal static string BotToken {
             get {
