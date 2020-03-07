@@ -42,6 +42,9 @@ packages/
 *.user
 *.sln.docstates
 .vs/
+AuthResources.Designer.cs
+AuthResources.resx
+
 # Build results
 
 [Dd]ebug/
